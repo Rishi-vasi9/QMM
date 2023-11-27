@@ -1,8 +1,10 @@
 ---
 title: "Assignment4_GP"
 author: "Rishitha Reddy Kasireddy"
-date: "2023-11-27"
-output: html_document
+date: "2023-11-26"
+output:
+  word_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -16,10 +18,14 @@ This notebook contains the code for Assignment 4
 # Findings
 
 1.We observe that the optimal value of the objective function is 225 on successfully solving the LP problem.
+
 2.The value of decision variables obtained are: x1=0, x2=0, x3=15, y1p=25, y1n=0, y2p=0, y2n=0.These are the values which can provide optimal solution for the goal programming problem.
+
 3.It can also be understood that the company can make 15 units of product3 in order to maximize the profit which implies that the product 3 is the only product which can earn increased profits.
+
 4.In this problem, the company had 25,000 additional employees (y1p), for which they would be penalised for the excess/rise in the number of employees.
-3.y2p and y2n were defined to measure changes in the earnings of the subsequent year relative to the current year, which in this case is "0," signifying the earnings for the subsequent year remain unaltered.
+
+5.y2p and y2n were defined to measure changes in the earnings of the subsequent year relative to the current year, which in this case is "0," signifying the earnings for the subsequent year remain unaltered.
 ***
 
 Now, loading the required libraries
