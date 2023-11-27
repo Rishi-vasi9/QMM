@@ -1,0 +1,73 @@
+---
+title: "Assignment4_GP"
+author: "Rishitha Reddy Kasireddy"
+date: "2023-11-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***
+
+This notebook contains the code for Assignment 4
+
+# Findings
+
+1.We observe that the optimal value of the objective function is 225 on successfully solving the LP problem.
+2.The value of decision variables obtained are: x1=0, x2=0, x3=15, y1p=25, y1n=0, y2p=0, y2n=0.These are the values which can provide optimal solution for the goal programming problem.
+3.It can also be understood that the company can make 15 units of product3 in order to maximize the profit which implies that the product 3 is the only product which can earn increased profits.
+4.In this problem, the company had 25,000 additional employees (y1p), for which they would be penalised for the excess/rise in the number of employees.
+3.y2p and y2n were defined to measure changes in the earnings of the subsequent year relative to the current year, which in this case is "0," signifying the earnings for the subsequent year remain unaltered.
+***
+
+Now, loading the required libraries
+
+```{r}
+library(lpSolve)
+library(lpSolveAPI)
+```
+
+***
+**Problem Statement: **
+The Research and Development Division of the Emax Corporation has developed three new products. A decision now needs to be made on which mix of these products should be produced.Management wants primary consideration given to three factors: total profit, stability in the workforce, and achieving an increase in the company’s earnings next year from the $75 million achieved this year. In particular, using the units given in the following table, they want to
+
+Maximize Z = P - 6C - 3D,
+where
+P = total (discounted) profit over the life of the new products,
+C = change (in either direction) in the current level of employment,
+D = decrease (if any) in next year’s earnings from the current year’s level.
+
+****
+
+We define the following:
+
+* Let x1, x2, and x3 be the production rates of Products 1, 2, and 3,
+respectively. Let y1p and y1n, respectively be the amount over (if any) and the amount under (if any) the employment level goal.Let y2p and y2n be the amount over (if any) and the amount under (if any)for the goal regarding earnings next year.
+Also the objective function is defined in terms of x1, x2, x3, y1p, y1n, y2p and y2n.
+
+* The Objective is to *Max 20x1 + 15x2 + 25x3 - 6y1p - 6y1n - 3y2n*. 
+
+*The constraints are
+  6x1 + 4x2 + 5x3 -y1p + y1n = 50;
+  8x1 + 7x2 + 5x3 -y2p + y2n = 75;
+  
+```{r}
+x <- read.lp("GP.lp")
+x
+```
+
+Solving the lp model
+
+```{r}
+solve(x)
+get.objective(x)        # get objective value
+get.variables(x)        # get values of decision variables
+get.constraints(x)      # get constraint RHS values
+```
+
+```{r}
+get.sensitivity.rhs(x)
+get.sensitivity.objex(x)
+```
